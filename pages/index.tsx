@@ -111,8 +111,8 @@ export default function Home({
 
             <Divider mt={3} mb={3} />
 
-            <Heading>
-                About <InfoIcon fontSize={"xl"} />
+            <Heading color={useColorModeValue("orange.500", "orange.300")}>
+                Contact Info <InfoIcon mb={1} fontSize={"xl"} />
             </Heading>
             {/* <Divider /> */}
 
