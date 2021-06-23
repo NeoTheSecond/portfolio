@@ -8,15 +8,25 @@ import NextImage, { ImageProps as NextImageProps } from "next/image";
 import profilePic from "../public/potrait.jpg";
 import {
     Circle,
-    Square,
-    Center,
     Heading,
     Text,
     chakra,
     Link,
     Divider,
+    Icon,
+    List,
+    ListItem,
+    ListIcon,
+    useToast,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
+import {
+    AiOutlineMail,
+    AiOutlineLinkedin,
+    AiOutlineFacebook,
+    AiOutlineInstagram,
+    AiOutlineHome,
+} from "react-icons/ai";
 
 const Image = chakra(NextImage, {
     baseStyle: { maxH: 220, maxW: 220 },
@@ -32,6 +42,7 @@ export default function Home({
     const { colorMode, toggleColorMode } = useColorMode();
     const isLight = colorMode === "light";
     const profilePicSize = "220px";
+    const toast = useToast();
 
     return (
         <Box borderWidth={2} p={5} borderColor="purple.400">
@@ -114,6 +125,84 @@ export default function Home({
             <Heading color={useColorModeValue("orange.500", "orange.300")}>
                 Contact Info <InfoIcon mb={1} fontSize={"xl"} />
             </Heading>
+            {/* <faGithub/> */}
+            <List spacing={3}>
+                <ListItem fontSize={20}>
+                    <ListIcon as={AiOutlineHome} color="green.500" />
+                    Based in Vietnam
+                </ListItem>
+                <ListItem fontSize={20}>
+                    <ListIcon as={AiOutlineMail} color="green.500" />
+                    <Link
+                        _hover={{
+                            cursor: "pointer",
+                            color: useColorModeValue(
+                                "yellow.500",
+                                "yellow.200"
+                            ),
+                            textDecoration: "underline",
+                        }}
+                        onClick={() => {
+                            navigator.clipboard.writeText(
+                                "quangman1404@gmail.com"
+                            );
+                            toast({
+                                title: "Coppied email to clipboard.",
+                                description: "quangman1404@gmail.com",
+                                status: "success",
+                                duration: 2000,
+                                isClosable: true,
+                            });
+                        }}
+                    >
+                        quangman1404@gmail.com
+                    </Link>
+                </ListItem>
+
+                <ListItem fontSize={20}>
+                    <ListIcon as={AiOutlineFacebook} color="green.500" />
+                    <Link
+                        href="https://www.facebook.com/man.phamquang.71"
+                        isExternal
+                        _hover={{
+                            cursor: "pointer",
+                            color: useColorModeValue("blue.400", "blue.400"),
+                            textDecoration: "underline",
+                        }}
+                    >
+                        Facebook profile
+                    </Link>
+                </ListItem>
+                <ListItem fontSize={20}>
+                    <ListIcon as={AiOutlineInstagram} color="green.500" />
+                    <Link
+                        href="https://www.instagram.com/manphamquang/"
+                        isExternal
+                        _hover={{
+                            cursor: "pointer",
+                            color: useColorModeValue("red.400", "red.400"),
+                            textDecoration: "underline",
+                        }}
+                    >
+                        Instagram profile
+                    </Link>
+                </ListItem>
+                <ListItem fontSize={20}>
+                    <ListIcon as={AiOutlineLinkedin} color="green.500" />
+                    <Link
+                        href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
+                        isExternal
+                        _hover={{
+                            cursor: "pointer",
+                            color: useColorModeValue("blue.300", "blue.300"),
+                            textDecoration: "underline",
+                        }}
+                    >
+                        Linkedin profile
+                    </Link>
+                </ListItem>
+            </List>
+
             {/* <Divider /> */}
 
             <Button
