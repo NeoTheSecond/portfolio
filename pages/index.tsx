@@ -323,7 +323,7 @@ export default function Home({
             </Box>
 
             <Button
-                mt={10}
+                mt={[20, 10, 10, 10]}
                 onClick={toggleColorMode}
                 colorScheme="cyan"
                 variant={isLight ? "solid" : "outline"}
