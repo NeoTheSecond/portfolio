@@ -35,6 +35,7 @@ import {
 
 import { MdSchool, MdWork } from "react-icons/md";
 import { BsBriefcaseFill } from "react-icons/bs";
+import Head from "next/head";
 
 const mochouse = {
     skills: [
@@ -62,275 +63,312 @@ export default function Home({
     const toast = useToast();
 
     return (
-        <Box borderWidth={2} p={5} borderColor="purple.400">
-            <Flex
-                direction={["column", "row", "row", "row"]}
-                alignItems={[
-                    "center",
-                    "flex-start",
-                    "flex-start",
-                    "flex-start",
-                ]}
-            >
-                <Box d="flex" flexDirection="column" alignItems="center">
-                    <Circle size={profilePicSize}>
-                        <Image
-                            borderRadius={110}
-                            src={profilePic}
-                            width={220}
-                            height={220}
-                            alt="A potrait of Man Pham"
-                            placeholder="empty"
-                        />
-                    </Circle>
-                    <Heading mt={1} size="xl">
-                        Mẫn Phạm
-                    </Heading>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        Fullstack Web Developer
-                    </Text>
-                </Box>
-                <Container>
-                    <Heading size="lg" color="red.400">
-                        Hello! 👋
-                    </Heading>
-                    <Text
-                        align="justify"
-                        fontSize={["md", "xl", "xl", "xl"]}
-                        fontWeight="semibold"
-                    >
-                        My name is{" "}
+        <>
+            <Head>
+                <title>Mẫn Phạm's Portfolio</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+                <meta property="og:title" content="Mẫn Phạm's Portfolio" />
+                <meta
+                    property="og:description"
+                    content="My name is Mẫn, a Fullstack Web Developer with over 5 years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
+                />
+                <meta
+                    property="og:image"
+                    content="https://manphamquang.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fpotrait.4de7d651975530c2f1e97f8a9a905d52.jpg&w=256&q=75"
+                />
+                <meta
+                    property="og:url"
+                    content="https://manphamquang.vercel.app"
+                />
+                <meta
+                    name="description"
+                    content="My name is Mẫn, a Fullstack Web Developer with over 5 years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
+                />
+            </Head>
+            <Box borderWidth={2} p={5} borderColor="purple.400">
+                <Flex
+                    direction={["column", "row", "row", "row"]}
+                    alignItems={[
+                        "center",
+                        "flex-start",
+                        "flex-start",
+                        "flex-start",
+                    ]}
+                >
+                    <Box d="flex" flexDirection="column" alignItems="center">
+                        <Circle size={profilePicSize}>
+                            <Image
+                                borderRadius={110}
+                                src={profilePic}
+                                width={220}
+                                height={220}
+                                alt="A potrait of Man Pham"
+                                placeholder="empty"
+                            />
+                        </Circle>
+                        <Heading mt={1} size="xl">
+                            Mẫn Phạm
+                        </Heading>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            Fullstack Web Developer
+                        </Text>
+                    </Box>
+                    <Container>
+                        <Heading size="lg" color="red.400">
+                            Hello! 👋
+                        </Heading>
+                        <Text
+                            align="justify"
+                            fontSize={["md", "xl", "xl", "xl"]}
+                            fontWeight="semibold"
+                        >
+                            My name is{" "}
+                            <Link
+                                color={useColorModeValue(
+                                    "teal.600",
+                                    "teal.200"
+                                )}
+                                _hover={{
+                                    cursor: "default",
+                                    color: useColorModeValue(
+                                        "yellow.500",
+                                        "yellow.200"
+                                    ),
+                                }}
+                            >
+                                Mẫn
+                            </Link>
+                            , a Fullstack Web Developer with over 5 years of
+                            experience. I am also an undergraduate enrolled in
+                            Bachelor of Information Technology at RMIT
+                            University in Vietnam.
+                            <br />
+                            <br />
+                            Aside from the web, I have dabbled in many other
+                            tech fields like Machine Learning, Penetration
+                            Testing, Video Games, etc. The more about my work
+                            can be found in{" "}
+                            <NextLink href="/experience" passHref>
+                                <Link
+                                    color="red.400"
+                                    _hover={{
+                                        color: "yellow.200",
+                                        textDecoration: "underline",
+                                    }}
+                                >
+                                    experience
+                                </Link>
+                            </NextLink>
+                            .
+                        </Text>
+                    </Container>
+                </Flex>
+
+                <Divider mt={3} mb={3} />
+
+                <Heading color={useColorModeValue("orange.500", "orange.300")}>
+                    Contact Info <InfoIcon mb={1} fontSize={"xl"} />
+                </Heading>
+                {/* <faGithub/> */}
+                <List spacing={3}>
+                    <ListItem fontSize={20}>
+                        <ListIcon as={AiOutlineHome} color="green.500" />
+                        Based in Vietnam
+                    </ListItem>
+                    <ListItem fontSize={20}>
+                        <ListIcon as={AiOutlineMail} color="green.500" />
                         <Link
-                            color={useColorModeValue("teal.600", "teal.200")}
                             _hover={{
-                                cursor: "default",
+                                cursor: "pointer",
                                 color: useColorModeValue(
                                     "yellow.500",
                                     "yellow.200"
                                 ),
+                                textDecoration: "underline",
+                            }}
+                            onClick={() => {
+                                navigator.clipboard.writeText(
+                                    "quangman1404@gmail.com"
+                                );
+                                toast({
+                                    title: "Coppied email to clipboard.",
+                                    description: "quangman1404@gmail.com",
+                                    status: "success",
+                                    duration: 2000,
+                                    isClosable: true,
+                                });
                             }}
                         >
-                            Mẫn
+                            quangman1404@gmail.com
                         </Link>
-                        , a Fullstack Web Developer with over 5 years of
-                        experience. I am also an undergraduate enrolled in
-                        Bachelor of Information Technology at RMIT University in
-                        Vietnam.
-                        <br />
-                        <br />
-                        Aside from the web, I have dabbled in many other tech
-                        fields like Machine Learning, Penetration Testing, Video
-                        Games, etc. The more about my work can be found in{" "}
-                        <NextLink href="/experience" passHref>
-                            <Link
-                                color="red.400"
-                                _hover={{
-                                    color: "yellow.200",
-                                    textDecoration: "underline",
-                                }}
-                            >
-                                experience
-                            </Link>
-                        </NextLink>
-                        .
-                    </Text>
-                </Container>
-            </Flex>
+                    </ListItem>
 
-            <Divider mt={3} mb={3} />
+                    <ListItem fontSize={20}>
+                        <ListIcon as={AiOutlineFacebook} color="green.500" />
+                        <Link
+                            href="https://www.facebook.com/man.phamquang.71"
+                            isExternal
+                            _hover={{
+                                cursor: "pointer",
+                                color: useColorModeValue(
+                                    "blue.400",
+                                    "blue.400"
+                                ),
+                                textDecoration: "underline",
+                            }}
+                        >
+                            Facebook profile
+                        </Link>
+                    </ListItem>
+                    <ListItem fontSize={20}>
+                        <ListIcon as={AiOutlineInstagram} color="green.500" />
+                        <Link
+                            href="https://www.instagram.com/manphamquang/"
+                            isExternal
+                            _hover={{
+                                cursor: "pointer",
+                                color: useColorModeValue("red.400", "red.400"),
+                                textDecoration: "underline",
+                            }}
+                        >
+                            Instagram profile
+                        </Link>
+                    </ListItem>
+                    <ListItem fontSize={20}>
+                        <ListIcon as={AiOutlineLinkedin} color="green.500" />
+                        <Link
+                            href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
+                            isExternal
+                            _hover={{
+                                cursor: "pointer",
+                                color: useColorModeValue(
+                                    "blue.300",
+                                    "blue.300"
+                                ),
+                                textDecoration: "underline",
+                            }}
+                        >
+                            Linkedin profile
+                        </Link>
+                    </ListItem>
+                </List>
 
-            <Heading color={useColorModeValue("orange.500", "orange.300")}>
-                Contact Info <InfoIcon mb={1} fontSize={"xl"} />
-            </Heading>
-            {/* <faGithub/> */}
-            <List spacing={3}>
-                <ListItem fontSize={20}>
-                    <ListIcon as={AiOutlineHome} color="green.500" />
-                    Based in Vietnam
-                </ListItem>
-                <ListItem fontSize={20}>
-                    <ListIcon as={AiOutlineMail} color="green.500" />
-                    <Link
-                        _hover={{
-                            cursor: "pointer",
-                            color: useColorModeValue(
-                                "yellow.500",
-                                "yellow.200"
-                            ),
-                            textDecoration: "underline",
-                        }}
-                        onClick={() => {
-                            navigator.clipboard.writeText(
-                                "quangman1404@gmail.com"
-                            );
-                            toast({
-                                title: "Coppied email to clipboard.",
-                                description: "quangman1404@gmail.com",
-                                status: "success",
-                                duration: 2000,
-                                isClosable: true,
-                            });
-                        }}
-                    >
-                        quangman1404@gmail.com
-                    </Link>
-                </ListItem>
+                <Divider mt={3} mb={3} />
 
-                <ListItem fontSize={20}>
-                    <ListIcon as={AiOutlineFacebook} color="green.500" />
-                    <Link
-                        href="https://www.facebook.com/man.phamquang.71"
-                        isExternal
-                        _hover={{
-                            cursor: "pointer",
-                            color: useColorModeValue("blue.400", "blue.400"),
-                            textDecoration: "underline",
-                        }}
-                    >
-                        Facebook profile
-                    </Link>
-                </ListItem>
-                <ListItem fontSize={20}>
-                    <ListIcon as={AiOutlineInstagram} color="green.500" />
-                    <Link
-                        href="https://www.instagram.com/manphamquang/"
-                        isExternal
-                        _hover={{
-                            cursor: "pointer",
-                            color: useColorModeValue("red.400", "red.400"),
-                            textDecoration: "underline",
-                        }}
-                    >
-                        Instagram profile
-                    </Link>
-                </ListItem>
-                <ListItem fontSize={20}>
-                    <ListIcon as={AiOutlineLinkedin} color="green.500" />
-                    <Link
-                        href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
-                        isExternal
-                        _hover={{
-                            cursor: "pointer",
-                            color: useColorModeValue("blue.300", "blue.300"),
-                            textDecoration: "underline",
-                        }}
-                    >
-                        Linkedin profile
-                    </Link>
-                </ListItem>
-            </List>
+                <Heading
+                    color={useColorModeValue("orange.500", "orange.300")}
+                    mb={2}
+                >
+                    Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
+                </Heading>
 
-            <Divider mt={3} mb={3} />
+                <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
+                    <Square h={[55, 70]} w={[55, 70]}>
+                        <Image
+                            src={pctPic}
+                            h={[55, 70]}
+                            w={[55, 70]}
+                            alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
+                            placeholder="blur"
+                        />
+                    </Square>
 
-            <Heading
-                color={useColorModeValue("orange.500", "orange.300")}
-                mb={2}
-            >
-                Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
-            </Heading>
-
-            <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
-                <Square h={[55, 70]} w={[55, 70]}>
-                    <Image
-                        src={pctPic}
-                        h={[55, 70]}
-                        w={[55, 70]}
-                        alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
-                        placeholder="blur"
-                    />
-                </Square>
-
-                <Box ml={2} mt={-1}>
-                    <Heading fontSize="xl" color="green.500">
-                        Phan Chau Trinh Highschool
-                    </Heading>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        Graduated in 2019
-                    </Text>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        Vietnam
-                    </Text>
+                    <Box ml={2} mt={-1}>
+                        <Heading fontSize="xl" color="green.500">
+                            Phan Chau Trinh Highschool
+                        </Heading>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            Graduated in 2019
+                        </Text>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            Vietnam
+                        </Text>
+                    </Box>
                 </Box>
-            </Box>
 
-            <Box h={70} d="flex" flexDirection="row">
-                <Square h={[55, 70]} w={[55, 70]}>
-                    <Image
-                        src={rmitPic}
-                        h={[55, 70]}
-                        w={[55, 70]}
-                        alt="RMIT - Ho Chi Minh City, Vietnam"
-                        placeholder="blur"
-                    />
-                </Square>
+                <Box h={70} d="flex" flexDirection="row">
+                    <Square h={[55, 70]} w={[55, 70]}>
+                        <Image
+                            src={rmitPic}
+                            h={[55, 70]}
+                            w={[55, 70]}
+                            alt="RMIT - Ho Chi Minh City, Vietnam"
+                            placeholder="blur"
+                        />
+                    </Square>
 
-                <Box ml={2} mt={-1}>
-                    <Heading fontSize="xl" color="green.500">
-                        Royal Melbourne Institute of Technology
-                    </Heading>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        Enrolled in 2019
-                    </Text>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        Vietnam
-                    </Text>
+                    <Box ml={2} mt={-1}>
+                        <Heading fontSize="xl" color="green.500">
+                            Royal Melbourne Institute of Technology
+                        </Heading>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            Enrolled in 2019
+                        </Text>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            Vietnam
+                        </Text>
+                    </Box>
                 </Box>
-            </Box>
 
-            <Divider mt={[10, 5]} mb={3} />
+                <Divider mt={[10, 5]} mb={3} />
 
-            <Heading
-                color={useColorModeValue("orange.500", "orange.300")}
-                mb={2}
-            >
-                Experience <Icon as={BsBriefcaseFill} mb={1} fontSize={"3xl"} />
-            </Heading>
+                <Heading
+                    color={useColorModeValue("orange.500", "orange.300")}
+                    mb={2}
+                >
+                    Experience{" "}
+                    <Icon as={BsBriefcaseFill} mb={1} fontSize={"3xl"} />
+                </Heading>
 
-            <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
-                <Square h={[55, 70]} w={[55, 70]}>
-                    <Image
-                        src={mocPic}
-                        h={[55, 70]}
-                        w={[55, 70]}
-                        alt="Mochouse DN Homestay - Da Nang city, Vietnam"
-                        placeholder="blur"
-                    />
-                </Square>
+                <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
+                    <Square h={[55, 70]} w={[55, 70]}>
+                        <Image
+                            src={mocPic}
+                            h={[55, 70]}
+                            w={[55, 70]}
+                            alt="Mochouse DN Homestay - Da Nang city, Vietnam"
+                            placeholder="blur"
+                        />
+                    </Square>
 
-                <Box ml={2} mt={-1}>
-                    <Heading fontSize="xl" color="green.500">
-                        Mochousedn{" "}
-                        {mochouse.skills.map((skill) => (
-                            <>
-                                <Badge
-                                    colorScheme={skill.color}
-                                    variant="subtle"
-                                >
-                                    {skill.name}
-                                </Badge>{" "}
-                            </>
-                        ))}
-                    </Heading>
-                    <Text color={useColorModeValue("gray.500", "gray.400")}>
-                        2019-2020
-                    </Text>
-                    <Text>
-                        Fullstack Developer, developed Web based bookings and
-                        management system for a Homestay Business in Da Nang,
-                        Vietnam.
-                    </Text>
+                    <Box ml={2} mt={-1}>
+                        <Heading fontSize="xl" color="green.500">
+                            Mochousedn{" "}
+                            {mochouse.skills.map((skill) => (
+                                <>
+                                    <Badge
+                                        colorScheme={skill.color}
+                                        variant="subtle"
+                                    >
+                                        {skill.name}
+                                    </Badge>{" "}
+                                </>
+                            ))}
+                        </Heading>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            2019-2020
+                        </Text>
+                        <Text>
+                            Fullstack Developer, developed Web based bookings
+                            and management system for a Homestay Business in Da
+                            Nang, Vietnam.
+                        </Text>
+                    </Box>
                 </Box>
-            </Box>
 
-            <Button
-                mt={[20, 10, 10, 10]}
-                onClick={toggleColorMode}
-                colorScheme="cyan"
-                variant={isLight ? "solid" : "outline"}
-            >
-                Toggle {isLight ? "Dark" : "Light"}
-            </Button>
-        </Box>
+                <Button
+                    mt={[20, 10, 10, 10]}
+                    onClick={toggleColorMode}
+                    colorScheme="cyan"
+                    variant={isLight ? "solid" : "outline"}
+                >
+                    Toggle {isLight ? "Dark" : "Light"}
+                </Button>
+            </Box>
+        </>
     );
 }
 
