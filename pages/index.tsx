@@ -214,18 +214,18 @@ export default function Home({
                 Education <Icon as={MdSchool} mb={4} fontSize={"3xl"} />
             </Heading>
 
-            <Box h={70} d="flex" flexDirection="row" mb={4}>
-                <Square h={70} w={70}>
+            <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
+                <Square h={[55, 70]} w={[55, 70]}>
                     <Image
                         src={pctPic}
-                        width={70}
-                        height={70}
+                        h={[55, 70]}
+                        w={[55, 70]}
                         alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
                         placeholder="blur"
                     />
                 </Square>
 
-                <Box ml={2}>
+                <Box ml={2} mt={-1}>
                     <Heading fontSize="xl" color="green.500">
                         Phan Chau Trinh Highschool
                     </Heading>
@@ -239,17 +239,17 @@ export default function Home({
             </Box>
 
             <Box h={70} d="flex" flexDirection="row">
-                <Square h={70} w={70}>
+                <Square h={[55, 70]} w={[55, 70]}>
                     <Image
                         src={rmitPic}
-                        width={70}
-                        height={70}
+                        h={[55, 70]}
+                        w={[55, 70]}
                         alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
                         placeholder="blur"
                     />
                 </Square>
 
-                <Box ml={2}>
+                <Box ml={2} mt={-1}>
                     <Heading fontSize="xl" color="green.500">
                         Royal Melbourne Institute of Technology
                     </Heading>
@@ -262,7 +262,7 @@ export default function Home({
                 </Box>
             </Box>
 
-            <Divider mt={5} mb={3} />
+            <Divider mt={[10, 5]} mb={3} />
 
             <Button
                 mt={10}
