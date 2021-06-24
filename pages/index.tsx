@@ -362,7 +362,7 @@ export default function Home({
                                 <>
                                     <Badge
                                         colorScheme={skill.color}
-                                        variant="subtle"
+                                        variant="outline"
                                     >
                                         {skill.name}
                                     </Badge>{" "}
@@ -398,7 +398,7 @@ export default function Home({
                                 <>
                                     <Badge
                                         colorScheme={skill.color}
-                                        variant="subtle"
+                                        variant="outline"
                                     >
                                         {skill.name}
                                     </Badge>{" "}
