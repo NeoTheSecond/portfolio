@@ -9,6 +9,7 @@ import profilePic from "../public/potrait.jpg";
 import pctPic from "../public/logo-pct.jpg";
 import rmitPic from "../public/rmit-logo.png";
 import mocPic from "../public/logo-mochouse.png";
+import ykhoaPic from "../public/logo-3dykhoa.png";
 import {
     Circle,
     Heading,
@@ -42,7 +43,25 @@ const mochouse = {
         { name: "react.js", color: "blue" },
         { name: "html", color: "red" },
         { name: "css", color: "blue" },
-        { name: "keystone.js", color: "yellow" },
+        { name: "keystone.js (version 5)", color: "yellow" },
+    ],
+};
+
+const vay24h = {
+    skills: [
+        { name: "Html", color: "blue" },
+        { name: "CSS", color: "blue" },
+        { name: "DevOps", color: "blue" },
+        { name: "Keystone.js (version 4)", color: "blue" },
+    ],
+};
+
+const ykhoa = {
+    skills: [
+        { name: "Html", color: "red" },
+        { name: "CSS", color: "blue" },
+        { name: "DevOps", color: "yellow" },
+        { name: "Keystone.js (version 4)", color: "green" },
     ],
 };
 
@@ -325,7 +344,7 @@ export default function Home({
                     <Icon as={BsBriefcaseFill} mb={1} fontSize={"3xl"} />
                 </Heading>
 
-                <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
+                <Box h={70} d="flex" flexDirection="row" mb={[32, 10, 10, 10]}>
                     <Square h={[55, 70]} w={[55, 70]}>
                         <Image
                             src={mocPic}
@@ -354,9 +373,45 @@ export default function Home({
                             2019-2020
                         </Text>
                         <Text>
-                            Fullstack Developer, developed Web based bookings
-                            and management system for a Homestay Business in Da
-                            Nang, Vietnam.
+                            Fullstack Developer, developed & deployed Web based
+                            bookings and management system for a Homestay
+                            Business in Da Nang, Vietnam.
+                        </Text>
+                    </Box>
+                </Box>
+
+                <Box h={70} d="flex" flexDirection="row" mb={[32, 10, 10, 10]}>
+                    <Square h={[55, 70]} w={[55, 70]}>
+                        <Image
+                            src={ykhoaPic}
+                            h={[55, 70]}
+                            w={[55, 70]}
+                            alt="Mochouse DN Homestay - Da Nang city, Vietnam"
+                            placeholder="blur"
+                        />
+                    </Square>
+
+                    <Box ml={2} mt={-1}>
+                        <Heading fontSize="xl" color="green.500">
+                            3dykhoa{" "}
+                            {ykhoa.skills.map((skill) => (
+                                <>
+                                    <Badge
+                                        colorScheme={skill.color}
+                                        variant="subtle"
+                                    >
+                                        {skill.name}
+                                    </Badge>{" "}
+                                </>
+                            ))}
+                        </Heading>
+                        <Text color={useColorModeValue("gray.500", "gray.400")}>
+                            2019
+                        </Text>
+                        <Text>
+                            Fullstack Developer, developed & deployed Landing
+                            Page, Blog and bookings system for a 3D Print
+                            Technology Hospital in Vietnam.
                         </Text>
                     </Box>
                 </Box>

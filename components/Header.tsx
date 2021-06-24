@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <Box bg={bg} h="50px" mt={8} mb={8}>
             <Center>
-                <h3>he</h3>
+                <h3>testing</h3>
             </Center>
         </Box>
     );
