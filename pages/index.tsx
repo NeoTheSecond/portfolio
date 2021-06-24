@@ -8,6 +8,7 @@ import NextImage, { ImageProps as NextImageProps } from "next/image";
 import profilePic from "../public/potrait.jpg";
 import pctPic from "../public/logo-pct.jpg";
 import rmitPic from "../public/rmit-logo.png";
+import mocPic from "../public/logo-mochouse.png";
 import {
     Circle,
     Heading,
@@ -21,6 +22,7 @@ import {
     ListIcon,
     useToast,
     Square,
+    Badge,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
@@ -31,7 +33,17 @@ import {
     AiOutlineHome,
 } from "react-icons/ai";
 
-import { MdSchool } from "react-icons/md";
+import { MdSchool, MdWork } from "react-icons/md";
+import { BsBriefcaseFill } from "react-icons/bs";
+
+const mochouse = {
+    skills: [
+        { name: "react.js", color: "blue" },
+        { name: "html", color: "red" },
+        { name: "css", color: "blue" },
+        { name: "keystone.js", color: "yellow" },
+    ],
+};
 
 const Image = chakra(NextImage, {
     baseStyle: { maxH: 220, maxW: 220 },
@@ -210,8 +222,11 @@ export default function Home({
 
             <Divider mt={3} mb={3} />
 
-            <Heading color={useColorModeValue("orange.500", "orange.300")}>
-                Education <Icon as={MdSchool} mb={4} fontSize={"3xl"} />
+            <Heading
+                color={useColorModeValue("orange.500", "orange.300")}
+                mb={2}
+            >
+                Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
             </Heading>
 
             <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
@@ -244,7 +259,7 @@ export default function Home({
                         src={rmitPic}
                         h={[55, 70]}
                         w={[55, 70]}
-                        alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
+                        alt="RMIT - Ho Chi Minh City, Vietnam"
                         placeholder="blur"
                     />
                 </Square>
@@ -263,6 +278,49 @@ export default function Home({
             </Box>
 
             <Divider mt={[10, 5]} mb={3} />
+
+            <Heading
+                color={useColorModeValue("orange.500", "orange.300")}
+                mb={2}
+            >
+                Experience <Icon as={BsBriefcaseFill} mb={1} fontSize={"3xl"} />
+            </Heading>
+
+            <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
+                <Square h={[55, 70]} w={[55, 70]}>
+                    <Image
+                        src={mocPic}
+                        h={[55, 70]}
+                        w={[55, 70]}
+                        alt="Mochouse DN Homestay - Da Nang city, Vietnam"
+                        placeholder="blur"
+                    />
+                </Square>
+
+                <Box ml={2} mt={-1}>
+                    <Heading fontSize="xl" color="green.500">
+                        Mochousedn{" "}
+                        {mochouse.skills.map((skill) => (
+                            <>
+                                <Badge
+                                    colorScheme={skill.color}
+                                    variant="subtle"
+                                >
+                                    {skill.name}
+                                </Badge>{" "}
+                            </>
+                        ))}
+                    </Heading>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        2019-2020
+                    </Text>
+                    <Text>
+                        Fullstack Developer, developed Web based bookings and
+                        management system for a Homestay Business in Da Nang,
+                        Vietnam.
+                    </Text>
+                </Box>
+            </Box>
 
             <Button
                 mt={10}
