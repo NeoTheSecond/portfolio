@@ -9,7 +9,7 @@ import {
     AiOutlineHome,
 } from "react-icons/ai";
 import { useColorModeValue } from "@chakra-ui/color-mode";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Link } from "@chakra-ui/react";
 
 export default function Footer() {
     const toast = useToast();
@@ -22,33 +22,47 @@ export default function Footer() {
             <Text color="red.200">© 2021 Man Pham</Text>
             <Text color="yellow.200">Created with Next.js and Chakra UI</Text>
             <div>
-                <Icon
-                    as={AiOutlineLinkedin}
-                    w={[6, 10, 10, 10]}
-                    h={[6, 10, 10, 10]}
-                    _hover={{
-                        cursor: "pointer",
-                        color: "blue.200",
-                    }}
-                />
-                <Icon
-                    as={AiOutlineFacebook}
-                    w={[6, 10, 10, 10]}
-                    h={[6, 10, 10, 10]}
-                    _hover={{
-                        cursor: "pointer",
-                        color: "blue.400",
-                    }}
-                />
-                <Icon
-                    as={AiOutlineInstagram}
-                    w={[6, 10, 10, 10]}
-                    h={[6, 10, 10, 10]}
-                    _hover={{
-                        cursor: "pointer",
-                        color: "red.400",
-                    }}
-                />
+                <Link
+                    href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
+                    isExternal
+                >
+                    <Icon
+                        as={AiOutlineLinkedin}
+                        w={[6, 10, 10, 10]}
+                        h={[6, 10, 10, 10]}
+                        _hover={{
+                            cursor: "pointer",
+                            color: "blue.200",
+                        }}
+                    />
+                </Link>
+                <Link
+                    href="https://www.facebook.com/man.phamquang.71"
+                    isExternal
+                >
+                    <Icon
+                        as={AiOutlineFacebook}
+                        w={[6, 10, 10, 10]}
+                        h={[6, 10, 10, 10]}
+                        _hover={{
+                            cursor: "pointer",
+                            color: "blue.400",
+                        }}
+                    />
+                </Link>
+
+                <Link href="https://www.instagram.com/manphamquang/" isExternal>
+                    <Icon
+                        as={AiOutlineInstagram}
+                        w={[6, 10, 10, 10]}
+                        h={[6, 10, 10, 10]}
+                        _hover={{
+                            cursor: "pointer",
+                            color: "red.400",
+                        }}
+                    />
+                </Link>
+
                 <Icon
                     as={AiOutlineMail}
                     w={[6, 10, 10, 10]}
