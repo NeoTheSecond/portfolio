@@ -70,11 +70,13 @@ export default function Home({
                     name="viewport"
                     content="initial-scale=1.0, width=device-width"
                 />
+                <meta property="og:type" content="website" />
                 <meta property="og:title" content="Mẫn Phạm's Portfolio" />
                 <meta
                     property="og:description"
                     content="My name is Mẫn, a Fullstack Web Developer with over 5 years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
                 />
+                <meta property="og:site_name" content="Mẫn Phạm's Portfolio" />
                 <meta
                     property="og:image"
                     content="https://manphamquang.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fpotrait.4de7d651975530c2f1e97f8a9a905d52.jpg&w=256&q=75"
