@@ -6,6 +6,8 @@ import { lists } from ".keystone/api";
 import { Box, Container, Flex, Spacer } from "@chakra-ui/layout";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 import profilePic from "../public/potrait.jpg";
+import pctPic from "../public/logo-pct.jpg";
+import rmitPic from "../public/rmit-logo.png";
 import {
     Circle,
     Heading,
@@ -18,6 +20,7 @@ import {
     ListItem,
     ListIcon,
     useToast,
+    Square,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
@@ -27,6 +30,8 @@ import {
     AiOutlineInstagram,
     AiOutlineHome,
 } from "react-icons/ai";
+
+import { MdSchool } from "react-icons/md";
 
 const Image = chakra(NextImage, {
     baseStyle: { maxH: 220, maxW: 220 },
@@ -203,7 +208,61 @@ export default function Home({
                 </ListItem>
             </List>
 
-            {/* <Divider /> */}
+            <Divider mt={3} mb={3} />
+
+            <Heading color={useColorModeValue("orange.500", "orange.300")}>
+                Education <Icon as={MdSchool} mb={4} fontSize={"3xl"} />
+            </Heading>
+
+            <Box h={70} d="flex" flexDirection="row" mb={4}>
+                <Square h={70} w={70}>
+                    <Image
+                        src={pctPic}
+                        width={70}
+                        height={70}
+                        alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
+                        placeholder="blur"
+                    />
+                </Square>
+
+                <Box ml={2}>
+                    <Heading fontSize="xl" color="green.500">
+                        Phan Chau Trinh Highschool
+                    </Heading>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        Graduated in 2019
+                    </Text>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        Vietnam
+                    </Text>
+                </Box>
+            </Box>
+
+            <Box h={70} d="flex" flexDirection="row">
+                <Square h={70} w={70}>
+                    <Image
+                        src={rmitPic}
+                        width={70}
+                        height={70}
+                        alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
+                        placeholder="blur"
+                    />
+                </Square>
+
+                <Box ml={2}>
+                    <Heading fontSize="xl" color="green.500">
+                        Royal Melbourne Institute of Technology
+                    </Heading>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        Enrolled in 2019
+                    </Text>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        Vietnam
+                    </Text>
+                </Box>
+            </Box>
+
+            <Divider mt={5} mb={3} />
 
             <Button
                 mt={10}
