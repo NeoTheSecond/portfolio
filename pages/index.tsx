@@ -113,7 +113,7 @@ export default function Home({
                             Mẫn
                         </Link>
                         , a Fullstack Web Developer with over 5 years of
-                        experience. I'm also an undergraduate enrolled in
+                        experience. I am also an undergraduate enrolled in
                         Bachelor of Information Technology at RMIT University in
                         Vietnam.
                         <br />
