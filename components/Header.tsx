@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/layout";
+import { Box, Heading } from "@chakra-ui/layout";
 import { Center, useColorModeValue } from "@chakra-ui/react";
 
 export default function Header() {
@@ -6,7 +6,7 @@ export default function Header() {
     return (
         <Box bg={bg} h="50px" mt={8} mb={8}>
             <Center>
-                <h3>testing</h3>
+                <Heading>Navbar coming soon...</Heading>
             </Center>
         </Box>
     );

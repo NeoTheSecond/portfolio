@@ -1,10 +1,11 @@
 import React from "react";
-import { Heading } from "@chakra-ui/layout";
+import { Heading, Box, Text } from "@chakra-ui/layout";
 
 export default function Experience() {
     return (
-        <div>
+        <Box minH="90vh" borderWidth={2} p={5} borderColor="purple.400">
             <Heading>Experience</Heading>
-        </div>
+            <Text>Coming soon</Text>
+        </Box>
     );
 }
