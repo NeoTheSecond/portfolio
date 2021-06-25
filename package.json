@@ -5,6 +5,7 @@
     "scripts": {
         "postinstall": "keystone-next postinstall",
         "dev": "next dev",
+        "server-dev": "nodemon next dev",
         "build": "next build",
         "start": "next start",
         "lint": "next lint"

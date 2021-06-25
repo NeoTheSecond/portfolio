@@ -14,3 +14,27 @@ model Post {
   slug    String?
   content String?
 }
+
+model Experience {
+  id              Int       @id @default(autoincrement())
+  title           String?
+  employmentType  String?
+  location        String?
+  startDate       DateTime?
+  endDate         DateTime?
+  description     String?
+  image_filesize  Int?
+  image_extension String?
+  image_width     Int?
+  image_height    Int?
+  image_mode      String?
+  image_id        String?
+  skills          Skill[]   @relation("Experience_skills_many")
+}
+
+model Skill {
+  id                     Int          @id @default(autoincrement())
+  title                  String?
+  colorScheme            String?
+  from_Experience_skills Experience[] @relation("Experience_skills_many")
+}

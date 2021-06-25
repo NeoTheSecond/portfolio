@@ -24,6 +24,7 @@ import {
     useToast,
     Square,
     Badge,
+    useBreakpointValue,
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
@@ -37,6 +38,7 @@ import {
 import { MdSchool, MdWork } from "react-icons/md";
 import { BsBriefcaseFill } from "react-icons/bs";
 import Head from "next/head";
+import ExperienceCard from "../components/ExperienceCard";
 
 const mochouse = {
     skills: [
@@ -75,11 +77,13 @@ const Image = chakra(NextImage, {
 
 export default function Home({
     posts,
+    experience,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     const { colorMode, toggleColorMode } = useColorMode();
     const isLight = colorMode === "light";
     const profilePicSize = "220px";
     const toast = useToast();
+    const imageSize = useBreakpointValue([55, 70]);
 
     return (
         <>
@@ -190,7 +194,10 @@ export default function Home({
 
                 <Divider mt={3} mb={3} />
 
-                <Heading color={useColorModeValue("orange.500", "orange.300")}>
+                <Heading
+                    mb={2}
+                    color={useColorModeValue("orange.500", "red.400")}
+                >
                     Contact Info <InfoIcon mb={1} fontSize={"xl"} />
                 </Heading>
                 {/* <faGithub/> */}
@@ -280,8 +287,8 @@ export default function Home({
                 <Divider mt={3} mb={3} />
 
                 <Heading
-                    color={useColorModeValue("orange.500", "orange.300")}
-                    mb={2}
+                    color={useColorModeValue("orange.500", "red.400")}
+                    mb={5}
                 >
                     Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
                 </Heading>
@@ -337,84 +344,27 @@ export default function Home({
                 <Divider mt={[10, 5]} mb={3} />
 
                 <Heading
-                    color={useColorModeValue("orange.500", "orange.300")}
-                    mb={2}
+                    color={useColorModeValue("orange.500", "red.400")}
+                    mb={5}
                 >
                     Experience{" "}
                     <Icon as={BsBriefcaseFill} mb={1} fontSize={"3xl"} />
                 </Heading>
 
-                <Box h={70} d="flex" flexDirection="row" mb={[32, 10, 10, 10]}>
-                    <Square h={[55, 70]} w={[55, 70]}>
-                        <Image
-                            src={mocPic}
-                            h={[55, 70]}
-                            w={[55, 70]}
-                            alt="Mochouse DN Homestay - Da Nang city, Vietnam"
-                            placeholder="blur"
-                        />
-                    </Square>
-
-                    <Box ml={2} mt={-1}>
-                        <Heading fontSize="xl" color="green.500">
-                            Mochousedn{" "}
-                            {mochouse.skills.map((skill) => (
-                                <>
-                                    <Badge
-                                        colorScheme={skill.color}
-                                        variant="outline"
-                                    >
-                                        {skill.name}
-                                    </Badge>{" "}
-                                </>
-                            ))}
-                        </Heading>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            2019-2020
-                        </Text>
-                        <Text>
-                            Fullstack Developer, developed & deployed Web based
-                            bookings and management system for a Homestay
-                            Business in Da Nang, Vietnam.
-                        </Text>
-                    </Box>
-                </Box>
-
-                <Box h={70} d="flex" flexDirection="row" mb={[32, 10, 10, 10]}>
-                    <Square h={[55, 70]} w={[55, 70]}>
-                        <Image
-                            src={ykhoaPic}
-                            h={[55, 70]}
-                            w={[55, 70]}
-                            alt="Mochouse DN Homestay - Da Nang city, Vietnam"
-                            placeholder="blur"
-                        />
-                    </Square>
-
-                    <Box ml={2} mt={-1}>
-                        <Heading fontSize="xl" color="green.500">
-                            3dykhoa{" "}
-                            {ykhoa.skills.map((skill) => (
-                                <>
-                                    <Badge
-                                        colorScheme={skill.color}
-                                        variant="outline"
-                                    >
-                                        {skill.name}
-                                    </Badge>{" "}
-                                </>
-                            ))}
-                        </Heading>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            2019
-                        </Text>
-                        <Text>
-                            Fullstack Developer, developed & deployed Landing
-                            Page, Blog and bookings system for a 3D Print
-                            Technology Hospital in Vietnam.
-                        </Text>
-                    </Box>
-                </Box>
+                {experience.map((job) => (
+                    <ExperienceCard
+                        key={job.id}
+                        title={job.title}
+                        id={job.id}
+                        employmentType={job.employmentType}
+                        description={job.description}
+                        startDate={job.startDate}
+                        endDate={job.endDate}
+                        image={job.image}
+                        location={job.location}
+                        skills={job.skills}
+                    />
+                ))}
 
                 <Button
                     mt={[20, 10, 10, 10]}
@@ -433,5 +383,8 @@ export default function Home({
 // The return of this function is provided to the `Home` component
 export async function getStaticProps() {
     const posts = await lists.Post.findMany({ query: "id title slug" });
-    return { props: { posts } };
+    const experience = await lists.Experience.findMany({
+        query: "id title employmentType location startDate endDate description image{ src, id } skills{ title, colorScheme }",
+    });
+    return { props: { posts, experience } };
 }
