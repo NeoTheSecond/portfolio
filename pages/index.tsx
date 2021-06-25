@@ -333,7 +333,6 @@ export default function Home({
                 ))}
 
                 <Button
-                    mt={[20, 10, 10, 10]}
                     onClick={toggleColorMode}
                     colorScheme="cyan"
                     variant={isLight ? "solid" : "outline"}
@@ -351,6 +350,7 @@ export async function getStaticProps() {
     const posts = await lists.Post.findMany({ query: "id title slug" });
     const experience = await lists.Experience.findMany({
         query: "id title employmentType location startDate endDate description image{ src } skills{ title, colorScheme }",
+        orderBy: [{ startDate: "desc" }],
     });
     const education = await lists.Education.findMany({
         query: "id title enrollmentYear graduationYear location image{ src }",

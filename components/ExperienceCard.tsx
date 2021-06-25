@@ -38,35 +38,52 @@ export default function ExperienceCard({
     let endDateStr =
         endDateProp.getMonth() + 1 + "/" + endDateProp.getFullYear();
     return (
-        <Box h={70} d="flex" flexDirection="row" mb={[32, 20, 10, 10]}>
-            <Square h={[55, 70]} w={[55, 70]}>
-                <NextImage
-                    src={image.src}
-                    height={70}
-                    width={70}
-                    alt={`${title} - ${location}`}
-                />
-            </Square>
+        <Box mb={5}>
+            <Box d="flex" flexDirection="row">
+                <Square h={[55, 70]} w={[55, 70]}>
+                    <NextImage
+                        src={image.src}
+                        height={70}
+                        width={70}
+                        alt={`${title} - ${location}`}
+                    />
+                </Square>
 
-            <Box ml={2} mt={-1}>
-                <Heading fontSize="xl" color="green.500">
-                    {title}{" "}
-                    {skills.map((skill) => (
-                        <Badge
-                            colorScheme={skill.colorScheme}
-                            variant="outline"
-                            key={skill.title}
-                            mr={1}
-                        >
-                            {skill.title}
-                        </Badge>
-                    ))}
-                </Heading>
-                <Text color={useColorModeValue("gray.500", "gray.400")}>
-                    {location} - {employmentType} - {startDateStr} -{" "}
-                    {endDateStr}
-                </Text>
+                <Box ml={2} mt={-1}>
+                    <Heading fontSize="xl" color="green.500">
+                        {title}{" "}
+                    </Heading>
+                    <Text color={useColorModeValue("gray.500", "gray.400")}>
+                        {location} - {employmentType} - {startDateStr} -{" "}
+                        {endDateStr}
+                    </Text>
+                    <Box d={["none", "block"]}>
+                        <Text>{description}</Text>
+                        {skills.map((skill) => (
+                            <Badge
+                                colorScheme={skill.colorScheme}
+                                variant="outline"
+                                key={skill.title}
+                                mr={1}
+                            >
+                                {skill.title}
+                            </Badge>
+                        ))}
+                    </Box>
+                </Box>
+            </Box>
+            <Box d={["block", "none"]}>
                 <Text>{description}</Text>
+                {skills.map((skill) => (
+                    <Badge
+                        colorScheme={skill.colorScheme}
+                        variant="outline"
+                        key={skill.title}
+                        mr={1}
+                    >
+                        {skill.title}
+                    </Badge>
+                ))}
             </Box>
         </Box>
     );
