@@ -63,13 +63,23 @@ const Skill = list({
     },
 });
 
+const Education = list({
+    fields: {
+        title: text({ isRequired: true }),
+        enrollmentYear: text({ isRequired: true }),
+        graduationYear: text({}),
+        location: text({ defaultValue: "Vietnam" }),
+        image: image({ isRequired: true }),
+    },
+});
+
 export default config({
     db: { provider: "sqlite", url: "file:./app.db" },
     experimental: {
         generateNextGraphqlAPI: true,
         generateNodeAPI: true,
     },
-    lists: { Post, Experience, Skill },
+    lists: { Post, Experience, Skill, Education },
     images: {
         upload: "local",
         local: {

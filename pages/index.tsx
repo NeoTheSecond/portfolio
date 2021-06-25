@@ -39,6 +39,7 @@ import { MdSchool, MdWork } from "react-icons/md";
 import { BsBriefcaseFill } from "react-icons/bs";
 import Head from "next/head";
 import ExperienceCard from "../components/ExperienceCard";
+import EducationCard from "../components/EducationCard";
 
 const mochouse = {
     skills: [
@@ -78,6 +79,7 @@ const Image = chakra(NextImage, {
 export default function Home({
     posts,
     experience,
+    education,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
     const { colorMode, toggleColorMode } = useColorMode();
     const isLight = colorMode === "light";
@@ -293,53 +295,17 @@ export default function Home({
                     Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
                 </Heading>
 
-                <Box h={70} d="flex" flexDirection="row" mb={[8, 4, 4, 4]}>
-                    <Square h={[55, 70]} w={[55, 70]}>
-                        <Image
-                            src={pctPic}
-                            h={[55, 70]}
-                            w={[55, 70]}
-                            alt="Phan Chau Trinh High School - Da Nang city, Vietnam"
-                            placeholder="blur"
-                        />
-                    </Square>
-
-                    <Box ml={2} mt={-1}>
-                        <Heading fontSize="xl" color="green.500">
-                            Phan Chau Trinh Highschool
-                        </Heading>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            Graduated in 2019
-                        </Text>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            Vietnam
-                        </Text>
-                    </Box>
-                </Box>
-
-                <Box h={70} d="flex" flexDirection="row">
-                    <Square h={[55, 70]} w={[55, 70]}>
-                        <Image
-                            src={rmitPic}
-                            h={[55, 70]}
-                            w={[55, 70]}
-                            alt="RMIT - Ho Chi Minh City, Vietnam"
-                            placeholder="blur"
-                        />
-                    </Square>
-
-                    <Box ml={2} mt={-1}>
-                        <Heading fontSize="xl" color="green.500">
-                            Royal Melbourne Institute of Technology
-                        </Heading>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            Enrolled in 2019
-                        </Text>
-                        <Text color={useColorModeValue("gray.500", "gray.400")}>
-                            Vietnam
-                        </Text>
-                    </Box>
-                </Box>
+                {education.map((school) => (
+                    <EducationCard
+                        id={school.id}
+                        key={school.id}
+                        title={school.title}
+                        enrollmentYear={school.enrollmentYear}
+                        graduationYear={school.graduationYear}
+                        image={school.image}
+                        location={school.location}
+                    />
+                ))}
 
                 <Divider mt={[10, 5]} mb={3} />
 
@@ -384,7 +350,10 @@ export default function Home({
 export async function getStaticProps() {
     const posts = await lists.Post.findMany({ query: "id title slug" });
     const experience = await lists.Experience.findMany({
-        query: "id title employmentType location startDate endDate description image{ src, id } skills{ title, colorScheme }",
+        query: "id title employmentType location startDate endDate description image{ src } skills{ title, colorScheme }",
     });
-    return { props: { posts, experience } };
+    const education = await lists.Education.findMany({
+        query: "id title enrollmentYear graduationYear location image{ src }",
+    });
+    return { props: { posts, experience, education } };
 }

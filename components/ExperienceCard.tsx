@@ -5,7 +5,7 @@ import { useColorModeValue } from "@chakra-ui/color-mode";
 
 type jobProps = {
     title: string;
-    id: Int16Array;
+    id: number;
     employmentType: string;
     description: string;
     startDate: string;
@@ -44,7 +44,7 @@ export default function ExperienceCard({
                     src={image.src}
                     height={70}
                     width={70}
-                    alt="Mochouse DN Homestay - Da Nang city, Vietnam"
+                    alt={`${title} - ${location}`}
                 />
             </Square>
 

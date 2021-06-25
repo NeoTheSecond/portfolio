@@ -144,16 +144,6 @@ type _QueryMeta {
   count: Int
 }
 
-type LocalImageFieldOutput implements ImageFieldOutput {
-  id: ID!
-  filesize: Int!
-  width: Int!
-  height: Int!
-  extension: ImageExtension!
-  ref: String!
-  src: String!
-}
-
 input ExperienceWhereInput {
   AND: [ExperienceWhereInput!]
   OR: [ExperienceWhereInput!]
@@ -370,6 +360,115 @@ input SkillsCreateInput {
 }
 
 """
+ A keystone list
+"""
+type Education {
+  id: ID!
+  title: String
+  enrollmentYear: String
+  graduationYear: String
+  location: String
+  image: ImageFieldOutput
+}
+
+type LocalImageFieldOutput implements ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: ImageExtension!
+  ref: String!
+  src: String!
+}
+
+input EducationWhereInput {
+  AND: [EducationWhereInput!]
+  OR: [EducationWhereInput!]
+  id: ID
+  id_not: ID
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID]
+  id_not_in: [ID]
+  title: String
+  title_not: String
+  title_contains: String
+  title_not_contains: String
+  title_in: [String]
+  title_not_in: [String]
+  enrollmentYear: String
+  enrollmentYear_not: String
+  enrollmentYear_contains: String
+  enrollmentYear_not_contains: String
+  enrollmentYear_in: [String]
+  enrollmentYear_not_in: [String]
+  graduationYear: String
+  graduationYear_not: String
+  graduationYear_contains: String
+  graduationYear_not_contains: String
+  graduationYear_in: [String]
+  graduationYear_not_in: [String]
+  location: String
+  location_not: String
+  location_contains: String
+  location_not_contains: String
+  location_in: [String]
+  location_not_in: [String]
+}
+
+input EducationWhereUniqueInput {
+  id: ID
+}
+
+enum SortEducationsBy {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  enrollmentYear_ASC
+  enrollmentYear_DESC
+  graduationYear_ASC
+  graduationYear_DESC
+  location_ASC
+  location_DESC
+}
+
+input EducationOrderByInput {
+  id: OrderDirection
+  title: OrderDirection
+  enrollmentYear: OrderDirection
+  graduationYear: OrderDirection
+  location: OrderDirection
+}
+
+input EducationUpdateInput {
+  title: String
+  enrollmentYear: String
+  graduationYear: String
+  location: String
+  image: ImageFieldInput
+}
+
+input EducationsUpdateInput {
+  id: ID!
+  data: EducationUpdateInput
+}
+
+input EducationCreateInput {
+  title: String
+  enrollmentYear: String
+  graduationYear: String
+  location: String
+  image: ImageFieldInput
+}
+
+input EducationsCreateInput {
+  data: EducationCreateInput
+}
+
+"""
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
@@ -467,6 +566,36 @@ type Mutation {
    Delete multiple Skill items by ID.
   """
   deleteSkills(ids: [ID!]): [Skill]
+
+  """
+   Create a single Education item.
+  """
+  createEducation(data: EducationCreateInput): Education
+
+  """
+   Create multiple Education items.
+  """
+  createEducations(data: [EducationsCreateInput]): [Education]
+
+  """
+   Update a single Education item by ID.
+  """
+  updateEducation(id: ID!, data: EducationUpdateInput): Education
+
+  """
+   Update multiple Education items by ID.
+  """
+  updateEducations(data: [EducationsUpdateInput]): [Education]
+
+  """
+   Delete a single Education item by ID.
+  """
+  deleteEducation(id: ID!): Education
+
+  """
+   Delete multiple Education items by ID.
+  """
+  deleteEducations(ids: [ID!]): [Education]
 }
 
 type Query {
@@ -574,6 +703,41 @@ type Query {
       reason: "This query will be removed in a future version. Please use skillsCount instead."
     )
   skillsCount(where: SkillWhereInput! = {}): Int
+
+  """
+   Search for all Education items which match the where clause.
+  """
+  allEducations(
+    where: EducationWhereInput! = {}
+    search: String
+    sortBy: [SortEducationsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [EducationOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): [Education!]
+
+  """
+   Search for the Education item with the matching ID.
+  """
+  Education(where: EducationWhereUniqueInput!): Education
+
+  """
+   Perform a meta-query on all Education items which match the where clause.
+  """
+  _allEducationsMeta(
+    where: EducationWhereInput! = {}
+    search: String
+    sortBy: [SortEducationsBy!]
+      @deprecated(reason: "sortBy has been deprecated in favour of orderBy")
+    orderBy: [EducationOrderByInput!]! = []
+    first: Int
+    skip: Int! = 0
+  ): _QueryMeta
+    @deprecated(
+      reason: "This query will be removed in a future version. Please use educationsCount instead."
+    )
+  educationsCount(where: EducationWhereInput! = {}): Int
   keystone: KeystoneMeta!
 }
 

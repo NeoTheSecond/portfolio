@@ -38,3 +38,17 @@ model Skill {
   colorScheme            String?
   from_Experience_skills Experience[] @relation("Experience_skills_many")
 }
+
+model Education {
+  id              Int     @id @default(autoincrement())
+  title           String?
+  enrollmentYear  String?
+  graduationYear  String?
+  location        String?
+  image_filesize  Int?
+  image_extension String?
+  image_width     Int?
+  image_height    Int?
+  image_mode      String?
+  image_id        String?
+}
