@@ -143,7 +143,7 @@ export default function Home({
                             Fullstack Web Developer
                         </Text>
                     </Box>
-                    <Container ml={3}>
+                    <Container ml={[0, 3]} p={0}>
                         <List spacing={3}>
                             <ListItem fontSize={20}>
                                 <ListIcon as={AiOutlineHome} color="red.400" />
