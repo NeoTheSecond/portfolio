@@ -143,148 +143,151 @@ export default function Home({
                             Fullstack Web Developer
                         </Text>
                     </Box>
-                    <Container>
-                        <Heading size="lg" color="red.400">
-                            Hello! 👋
-                        </Heading>
-                        <Text
-                            align="justify"
-                            fontSize={["md", "xl", "xl", "xl"]}
-                            fontWeight="semibold"
-                        >
-                            My name is{" "}
-                            <Link
-                                color={useColorModeValue(
-                                    "teal.600",
-                                    "teal.200"
-                                )}
-                                _hover={{
-                                    cursor: "default",
-                                    color: useColorModeValue(
-                                        "yellow.500",
-                                        "yellow.200"
-                                    ),
-                                }}
-                            >
-                                Mẫn
-                            </Link>
-                            , a Fullstack Web Developer with over 5 years of
-                            experience. I am also an undergraduate enrolled in
-                            Bachelor of Information Technology at RMIT
-                            University in Vietnam.
-                            <br />
-                            <br />
-                            Aside from the web, I have dabbled in many other
-                            tech fields like Machine Learning, Penetration
-                            Testing, Video Games, etc. The more about my work
-                            can be found in{" "}
-                            <NextLink href="/experience" passHref>
+                    <Container ml={3}>
+                        <List spacing={3}>
+                            <ListItem fontSize={20}>
+                                <ListIcon as={AiOutlineHome} color="red.400" />
+                                Based in Vietnam
+                            </ListItem>
+                            <ListItem fontSize={20}>
+                                <ListIcon as={AiOutlineMail} color="red.400" />
                                 <Link
-                                    color="red.400"
                                     _hover={{
-                                        color: "yellow.200",
+                                        cursor: "pointer",
+                                        color: useColorModeValue(
+                                            "yellow.500",
+                                            "yellow.200"
+                                        ),
+                                        textDecoration: "underline",
+                                    }}
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(
+                                            "quangman1404@gmail.com"
+                                        );
+                                        toast({
+                                            title: "Coppied email to clipboard.",
+                                            description: "quangman1404@gmail.com",
+                                            status: "success",
+                                            duration: 2000,
+                                            isClosable: true,
+                                        });
+                                    }}
+                                >
+                                    quangman1404@gmail.com
+                                </Link>
+                            </ListItem>
+
+                            <ListItem fontSize={20}>
+                                <ListIcon
+                                    as={AiOutlineFacebook}
+                                    color="red.400"
+                                />
+                                <Link
+                                    href="https://www.facebook.com/man.phamquang.71"
+                                    isExternal
+                                    _hover={{
+                                        cursor: "pointer",
+                                        color: useColorModeValue(
+                                            "blue.400",
+                                            "blue.400"
+                                        ),
                                         textDecoration: "underline",
                                     }}
                                 >
-                                    experience
+                                    Facebook profile
                                 </Link>
-                            </NextLink>
-                            .
-                        </Text>
+                            </ListItem>
+                            <ListItem fontSize={20}>
+                                <ListIcon
+                                    as={AiOutlineInstagram}
+                                    color="red.400"
+                                />
+                                <Link
+                                    href="https://www.instagram.com/manphamquang/"
+                                    isExternal
+                                    _hover={{
+                                        cursor: "pointer",
+                                        color: useColorModeValue(
+                                            "red.400",
+                                            "red.400"
+                                        ),
+                                        textDecoration: "underline",
+                                    }}
+                                >
+                                    Instagram profile
+                                </Link>
+                            </ListItem>
+                            <ListItem fontSize={20}>
+                                <ListIcon
+                                    as={AiOutlineLinkedin}
+                                    color="red.400"
+                                />
+                                <Link
+                                    href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
+                                    isExternal
+                                    _hover={{
+                                        cursor: "pointer",
+                                        color: useColorModeValue(
+                                            "blue.300",
+                                            "blue.300"
+                                        ),
+                                        textDecoration: "underline",
+                                    }}
+                                >
+                                    Linkedin profile
+                                </Link>
+                            </ListItem>
+                        </List>
                     </Container>
+
                 </Flex>
 
                 <Divider mt={3} mb={3} />
-
-                <Heading
-                    mb={2}
-                    color={useColorModeValue("orange.500", "red.400")}
-                >
-                    Contact Info <InfoIcon mb={1} fontSize={"xl"} />
+                {/* <Container> */}
+                <Heading size="lg" color="red.400">
+                    Hello! 👋
                 </Heading>
-                {/* <faGithub/> */}
-                <List spacing={3}>
-                    <ListItem fontSize={20}>
-                        <ListIcon as={AiOutlineHome} color="green.500" />
-                        Based in Vietnam
-                    </ListItem>
-                    <ListItem fontSize={20}>
-                        <ListIcon as={AiOutlineMail} color="green.500" />
+                <Text
+                    align="justify"
+                    fontSize={["md", "xl", "xl", "xl"]}
+                    fontWeight="semibold"
+                >
+                    My name is{" "}
+                    <Link
+                        color={useColorModeValue("teal.600", "teal.200")}
+                        _hover={{
+                            cursor: "default",
+                            color: useColorModeValue(
+                                "yellow.500",
+                                "yellow.200"
+                            ),
+                        }}
+                    >
+                        Mẫn
+                    </Link>
+                    , a Fullstack Web Developer with over 5 years of experience.
+                    I am also an undergraduate enrolled in Bachelor of
+                    Information Technology at RMIT University in Vietnam.
+                    <br />
+                    <br />
+                    Aside from the web, I have dabbled in many other tech fields
+                    like Machine Learning, Penetration Testing, Video Games,
+                    etc. The more about my work can be found in{" "}
+                    <NextLink href="/experience" passHref>
                         <Link
+                            color="red.400"
                             _hover={{
-                                cursor: "pointer",
-                                color: useColorModeValue(
-                                    "yellow.500",
-                                    "yellow.200"
-                                ),
+                                color: "yellow.200",
                                 textDecoration: "underline",
                             }}
-                            onClick={() => {
-                                navigator.clipboard.writeText(
-                                    "quangman1404@gmail.com"
-                                );
-                                toast({
-                                    title: "Coppied email to clipboard.",
-                                    description: "quangman1404@gmail.com",
-                                    status: "success",
-                                    duration: 2000,
-                                    isClosable: true,
-                                });
-                            }}
                         >
-                            quangman1404@gmail.com
+                            experience
                         </Link>
-                    </ListItem>
+                    </NextLink>
+                    .
+                </Text>
 
-                    <ListItem fontSize={20}>
-                        <ListIcon as={AiOutlineFacebook} color="green.500" />
-                        <Link
-                            href="https://www.facebook.com/man.phamquang.71"
-                            isExternal
-                            _hover={{
-                                cursor: "pointer",
-                                color: useColorModeValue(
-                                    "blue.400",
-                                    "blue.400"
-                                ),
-                                textDecoration: "underline",
-                            }}
-                        >
-                            Facebook profile
-                        </Link>
-                    </ListItem>
-                    <ListItem fontSize={20}>
-                        <ListIcon as={AiOutlineInstagram} color="green.500" />
-                        <Link
-                            href="https://www.instagram.com/manphamquang/"
-                            isExternal
-                            _hover={{
-                                cursor: "pointer",
-                                color: useColorModeValue("red.400", "red.400"),
-                                textDecoration: "underline",
-                            }}
-                        >
-                            Instagram profile
-                        </Link>
-                    </ListItem>
-                    <ListItem fontSize={20}>
-                        <ListIcon as={AiOutlineLinkedin} color="green.500" />
-                        <Link
-                            href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
-                            isExternal
-                            _hover={{
-                                cursor: "pointer",
-                                color: useColorModeValue(
-                                    "blue.300",
-                                    "blue.300"
-                                ),
-                                textDecoration: "underline",
-                            }}
-                        >
-                            Linkedin profile
-                        </Link>
-                    </ListItem>
-                </List>
+
 
                 <Divider mt={3} mb={3} />
 

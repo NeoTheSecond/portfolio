@@ -1,5 +1,6 @@
 import React from "react";
-import { Badge, Text, Box, Heading, Square } from "@chakra-ui/layout";
+import { Badge, Box, Heading, Square } from "@chakra-ui/layout";
+import { Text } from "@chakra-ui/react";
 import NextImage from "next/image";
 import { useColorModeValue } from "@chakra-ui/color-mode";
 
@@ -38,7 +39,7 @@ export default function ExperienceCard({
     let endDateStr =
         endDateProp.getMonth() + 1 + "/" + endDateProp.getFullYear();
     return (
-        <Box mb={5}>
+        <Box mb={5} bg={useColorModeValue("gray.100", "gray.700")} p={2} borderWidth="1px" borderRadius="lg">
             <Box d="flex" flexDirection="row">
                 <Square h={[55, 70]} w={[55, 70]}>
                     <NextImage
@@ -58,7 +59,7 @@ export default function ExperienceCard({
                         {endDateStr}
                     </Text>
                     <Box d={["none", "block"]}>
-                        <Text>{description}</Text>
+                        <Text noOfLines={2}>{description}</Text>
                         {skills.map((skill) => (
                             <Badge
                                 colorScheme={skill.colorScheme}
@@ -73,7 +74,7 @@ export default function ExperienceCard({
                 </Box>
             </Box>
             <Box d={["block", "none"]}>
-                <Text>{description}</Text>
+                <Text noOfLines={2}>{description}</Text>
                 {skills.map((skill) => (
                     <Badge
                         colorScheme={skill.colorScheme}
