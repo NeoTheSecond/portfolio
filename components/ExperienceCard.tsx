@@ -86,7 +86,7 @@ export default function ExperienceCard({
                 <Box ml={2} mt={-1}>
                     <Flex><Heading fontSize="xl" color="green.500">
                         {title}{" "}
-                    </Heading><Spacer /><MotionBox variants={chevronVariants} animate={show ? 'rotate' : 'stop'} ><ChevronDownIcon /></MotionBox></Flex>
+                    </Heading><Spacer /><MotionBox variants={chevronVariants} animate={show ? 'rotate' : 'stop'} h="100%" ><ChevronDownIcon /></MotionBox></Flex>
                     <Text color={useColorModeValue("gray.500", "gray.400")}>
                         {location} - {employmentType} - {startDateStr} -{" "}
                         {endDateStr}
