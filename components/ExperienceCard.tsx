@@ -98,7 +98,7 @@ export default function ExperienceCard({
                         {/* <Text noOfLines={2}>{description}</Text> */}
                         {skills.map((skill) => (
                             <Badge
-                                colorScheme={skill.colorScheme}
+                                _hover={{ color: `${skill.colorScheme.toLowerCase()}.300` }}
                                 variant="outline"
                                 key={skill.title}
                                 mr={1}
@@ -117,7 +117,7 @@ export default function ExperienceCard({
                 </Collapse>
                 {skills.map((skill) => (
                     <Badge
-                        colorScheme={skill.colorScheme}
+                        _hover={{ color: `${skill.colorScheme.toLowerCase()}.300` }}
                         variant="outline"
                         key={skill.title}
                         mr={1}
