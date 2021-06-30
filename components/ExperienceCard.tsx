@@ -1,8 +1,28 @@
 import React from "react";
 import { Badge, Box, Heading, Square } from "@chakra-ui/layout";
-import { Text } from "@chakra-ui/react";
+import {
+    Text,
+    Collapse,
+    Button,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    SlideFade,
+    Flex,
+    Stack,
+    Spacer,
+    Icon,
+    IconProps,
+    BoxProps
+} from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import NextImage from "next/image";
 import { useColorModeValue } from "@chakra-ui/color-mode";
+import { BsChevronDown } from 'react-icons/bs'
+import { motion } from 'framer-motion';
+
 
 type jobProps = {
     title: string;
@@ -19,6 +39,14 @@ type jobProps = {
         title: string;
         colorScheme: string;
     }[];
+};
+
+export const MotionBox = motion<BoxProps>(Box);
+
+const chevronVariants = {
+    rotate: { rotate: -180 },
+    // You can do whatever you want here, if you just want it to stop completely use `rotate: 0`
+    initial: { rotate: 0 }
 };
 
 export default function ExperienceCard({
@@ -38,8 +66,13 @@ export default function ExperienceCard({
         startDateProp.getMonth() + 1 + "/" + startDateProp.getFullYear();
     let endDateStr =
         endDateProp.getMonth() + 1 + "/" + endDateProp.getFullYear();
+
+    const [show, setShow] = React.useState(false)
+
+
+    const handleToggle = () => setShow(!show)
     return (
-        <Box mb={5} bg={useColorModeValue("gray.100", "gray.700")} p={2} borderWidth="1px" borderRadius="lg">
+        <Box onClick={handleToggle} mb={5} bg={useColorModeValue("gray.100", "gray.700")} p={2} borderWidth="1px" borderRadius="lg">
             <Box d="flex" flexDirection="row">
                 <Square h={[55, 70]} w={[55, 70]}>
                     <NextImage
@@ -51,15 +84,18 @@ export default function ExperienceCard({
                 </Square>
 
                 <Box ml={2} mt={-1}>
-                    <Heading fontSize="xl" color="green.500">
+                    <Flex><Heading fontSize="xl" color="green.500">
                         {title}{" "}
-                    </Heading>
+                    </Heading><Spacer /><MotionBox variants={chevronVariants} animate={show ? 'rotate' : 'stop'} ><ChevronDownIcon /></MotionBox></Flex>
                     <Text color={useColorModeValue("gray.500", "gray.400")}>
                         {location} - {employmentType} - {startDateStr} -{" "}
                         {endDateStr}
                     </Text>
                     <Box d={["none", "block"]}>
-                        <Text noOfLines={2}>{description}</Text>
+                        <Collapse startingHeight={50} in={show}>
+                            <Text>{description}</Text>
+                        </Collapse>
+                        {/* <Text noOfLines={2}>{description}</Text> */}
                         {skills.map((skill) => (
                             <Badge
                                 colorScheme={skill.colorScheme}
@@ -71,10 +107,14 @@ export default function ExperienceCard({
                             </Badge>
                         ))}
                     </Box>
+
                 </Box>
             </Box>
             <Box d={["block", "none"]}>
-                <Text noOfLines={2}>{description}</Text>
+                {/* <Text noOfLines={2}>{description}</Text> */}
+                <Collapse startingHeight={45} in={show}>
+                    <Text>{description}</Text>
+                </Collapse>
                 {skills.map((skill) => (
                     <Badge
                         colorScheme={skill.colorScheme}

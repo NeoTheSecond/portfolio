@@ -13,6 +13,7 @@ import ykhoaPic from "../public/logo-3dykhoa.png";
 import {
     Circle,
     Heading,
+    HeadingProps,
     Text,
     chakra,
     Link,
@@ -25,6 +26,9 @@ import {
     Square,
     Badge,
     useBreakpointValue,
+    HStack,
+    Accordion,
+    AccordionItem
 } from "@chakra-ui/react";
 import { InfoIcon } from "@chakra-ui/icons";
 import {
@@ -40,33 +44,9 @@ import { BsBriefcaseFill } from "react-icons/bs";
 import Head from "next/head";
 import ExperienceCard from "../components/ExperienceCard";
 import EducationCard from "../components/EducationCard";
+import { motion } from 'framer-motion';
 
-const mochouse = {
-    skills: [
-        { name: "react.js", color: "blue" },
-        { name: "html", color: "red" },
-        { name: "css", color: "blue" },
-        { name: "keystone.js (version 5)", color: "yellow" },
-    ],
-};
-
-const vay24h = {
-    skills: [
-        { name: "Html", color: "blue" },
-        { name: "CSS", color: "blue" },
-        { name: "DevOps", color: "blue" },
-        { name: "Keystone.js (version 4)", color: "blue" },
-    ],
-};
-
-const ykhoa = {
-    skills: [
-        { name: "Html", color: "red" },
-        { name: "CSS", color: "blue" },
-        { name: "DevOps", color: "yellow" },
-        { name: "Keystone.js (version 4)", color: "green" },
-    ],
-};
+const ANIMATION_DURATION = 0.5;
 
 const Image = chakra(NextImage, {
     baseStyle: { maxH: 220, maxW: 220 },
@@ -75,6 +55,8 @@ const Image = chakra(NextImage, {
             prop
         ),
 });
+
+export const MotionHeading = motion<HeadingProps>(Heading);
 
 export default function Home({
     posts,
@@ -244,9 +226,20 @@ export default function Home({
 
                 <Divider mt={3} mb={3} />
                 {/* <Container> */}
-                <Heading size="lg" color="red.400">
-                    Hello! 👋
+                <Heading size="lg" color="red.400" d="inline"
+                >
+                    <motion.p style={{ display: "inline-block" }} animate={{
+                        rotate: 15
+                    }}
+                        transition={{
+                            repeat: Infinity,
+                            repeatType: "reverse",
+                            duration: ANIMATION_DURATION
+
+                        }} >👋</motion.p>
+                    Hello!
                 </Heading>
+
                 <Text
                     align="justify"
                     fontSize={["md", "xl", "xl", "xl"]}
@@ -298,7 +291,7 @@ export default function Home({
                     Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
                 </Heading>
 
-                {education.map((school) => (
+                {education.map((school, i) => (
                     <EducationCard
                         id={school.id}
                         key={school.id}
