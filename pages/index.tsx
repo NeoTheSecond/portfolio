@@ -96,8 +96,26 @@ export default function Home({
                     name="description"
                     content="My name is Mẫn, a Fullstack Web Developer with over 5 years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
                 />
+                <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+                <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+                <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+                <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+                <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
+                <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
+                <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
+                <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+                <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="msapplication-TileColor" content="#ffffff" />
+                <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+                <meta name="theme-color" content="#ffffff"></meta>
+
             </Head>
-            <Box borderWidth={2} p={5} borderColor="purple.400">
+            <Box borderWidth={2} p={5} borderColor={useColorModeValue("gray.300", "purple.400")}>
                 <Flex
                     direction={["column", "row", "row", "row"]}
                     alignItems={[
@@ -128,97 +146,128 @@ export default function Home({
                     <Container ml={[0, 3]} p={0}>
                         <List spacing={3}>
                             <ListItem fontSize={20}>
-                                <ListIcon as={AiOutlineHome} color="red.400" />
+                                <ListIcon as={AiOutlineHome} color={useColorModeValue("gray.500", "red.400")} />
                                 Based in Vietnam
                             </ListItem>
-                            <ListItem fontSize={20}>
-                                <ListIcon as={AiOutlineMail} color="red.400" />
-                                <Link
-                                    _hover={{
-                                        cursor: "pointer",
+                            <div>
+                                <ListItem fontSize={20} role="group" d="inline">
+                                    <ListIcon as={AiOutlineMail} _groupHover={{
                                         color: useColorModeValue(
                                             "yellow.500",
                                             "yellow.200"
                                         ),
-                                        textDecoration: "underline",
-                                    }}
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(
-                                            "quangman1404@gmail.com"
-                                        );
-                                        toast({
-                                            title: "Coppied email to clipboard.",
-                                            description: "quangman1404@gmail.com",
-                                            status: "success",
-                                            duration: 2000,
-                                            isClosable: true,
-                                        });
-                                    }}
-                                >
-                                    quangman1404@gmail.com
-                                </Link>
-                            </ListItem>
+                                    }} color={useColorModeValue("gray.500", "red.400")} />
+                                    <Link
+                                        _groupHover={{
+                                            cursor: "pointer",
+                                            color: useColorModeValue(
+                                                "yellow.500",
+                                                "yellow.200"
+                                            ),
+                                            textDecoration: "underline",
+                                        }}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(
+                                                "quangman1404@gmail.com"
+                                            );
+                                            toast({
+                                                title: "Coppied email to clipboard.",
+                                                description: "quangman1404@gmail.com",
+                                                status: "success",
+                                                duration: 2000,
+                                                isClosable: true,
+                                            });
+                                        }}
+                                    >
+                                        quangman1404@gmail.com
+                                    </Link>
+                                </ListItem>
+                            </div>
 
-                            <ListItem fontSize={20}>
-                                <ListIcon
-                                    as={AiOutlineFacebook}
-                                    color="red.400"
-                                />
-                                <Link
-                                    href="https://www.facebook.com/man.phamquang.71"
-                                    isExternal
-                                    _hover={{
-                                        cursor: "pointer",
-                                        color: useColorModeValue(
-                                            "blue.400",
-                                            "blue.400"
-                                        ),
-                                        textDecoration: "underline",
-                                    }}
-                                >
-                                    Facebook profile
-                                </Link>
-                            </ListItem>
-                            <ListItem fontSize={20}>
-                                <ListIcon
-                                    as={AiOutlineInstagram}
-                                    color="red.400"
-                                />
-                                <Link
-                                    href="https://www.instagram.com/manphamquang/"
-                                    isExternal
-                                    _hover={{
-                                        cursor: "pointer",
-                                        color: useColorModeValue(
-                                            "red.400",
-                                            "red.400"
-                                        ),
-                                        textDecoration: "underline",
-                                    }}
-                                >
-                                    Instagram profile
-                                </Link>
-                            </ListItem>
-                            <ListItem fontSize={20}>
-                                <ListIcon
-                                    as={AiOutlineLinkedin}
-                                    color="red.400"
-                                />
-                                <Link
-                                    href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
-                                    isExternal
-                                    _hover={{
-                                        cursor: "pointer",
-                                        color: useColorModeValue(
-                                            "blue.300",
-                                            "blue.300"
-                                        ),
-                                        textDecoration: "underline",
-                                    }}
-                                >
-                                    Linkedin profile
-                                </Link>
-                            </ListItem>
+                            <div>
+                                <ListItem fontSize={20} role="group" d="inline">
+                                    <ListIcon
+                                        as={AiOutlineFacebook}
+                                        color={useColorModeValue("gray.500", "red.400")}
+                                        _groupHover={{
+                                            color: useColorModeValue(
+                                                "blue.400",
+                                                "blue.400"
+                                            ),
+                                        }}
+                                    />
+                                    <Link
+                                        href="https://www.facebook.com/man.phamquang.71"
+                                        isExternal
+                                        _hover={{
+                                            cursor: "pointer",
+                                            color: useColorModeValue(
+                                                "blue.400",
+                                                "blue.400"
+                                            ),
+                                            textDecoration: "underline",
+                                        }}
+                                    >
+                                        Facebook profile
+                                    </Link>
+                                </ListItem>
+                            </div>
+                            <div>
+                                <ListItem fontSize={20} role="group" d="inline">
+                                    <ListIcon
+                                        as={AiOutlineInstagram}
+                                        color={useColorModeValue("gray.500", "red.400")}
+                                        _groupHover={{
+                                            color: useColorModeValue(
+                                                "red.400",
+                                                "red.400"
+                                            ),
+                                        }}
+                                    />
+                                    <Link
+                                        href="https://www.instagram.com/manphamquang/"
+                                        isExternal
+                                        _hover={{
+                                            cursor: "pointer",
+                                            color: useColorModeValue(
+                                                "red.400",
+                                                "red.400"
+                                            ),
+                                            textDecoration: "underline",
+                                        }}
+                                    >
+                                        Instagram profile
+                                    </Link>
+                                </ListItem>
+                            </div>
+                            <div>
+                                <ListItem fontSize={20} role="group" d="inline">
+                                    <ListIcon
+                                        as={AiOutlineLinkedin}
+                                        color={useColorModeValue("gray.500", "red.400")}
+                                        _groupHover={{
+                                            color: useColorModeValue(
+                                                "blue.300",
+                                                "blue.300"
+                                            ),
+                                        }}
+                                    />
+                                    <Link
+                                        href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"
+                                        isExternal
+                                        _hover={{
+                                            cursor: "pointer",
+                                            color: useColorModeValue(
+                                                "blue.300",
+                                                "blue.300"
+                                            ),
+                                            textDecoration: "underline",
+                                        }}
+                                    >
+                                        Linkedin profile
+                                    </Link>
+                                </ListItem>
+                            </div>
                         </List>
                     </Container>
 
@@ -226,7 +275,7 @@ export default function Home({
 
                 <Divider mt={3} mb={3} />
                 {/* <Container> */}
-                <Heading size="lg" color="red.400" d="inline"
+                <Heading size="lg" color={useColorModeValue("gray.700", "red.400")} d="inline"
                 >
                     <motion.p style={{ display: "inline-block" }} animate={{
                         rotate: 15
@@ -236,14 +285,14 @@ export default function Home({
                             repeatType: "reverse",
                             duration: ANIMATION_DURATION
 
-                        }} >👋</motion.p>
+                        }} >👋🏻</motion.p>
                     Hello!
                 </Heading>
 
                 <Text
                     align="justify"
                     fontSize={["md", "xl", "xl", "xl"]}
-                    fontWeight="semibold"
+                    fontWeight="normal"
                 >
                     My name is{" "}
                     <Link
@@ -268,9 +317,9 @@ export default function Home({
                     etc. The more about my work can be found in{" "}
                     <NextLink href="/experience" passHref>
                         <Link
-                            color="red.400"
+                            color={useColorModeValue("blue.400", "red.400")}
                             _hover={{
-                                color: "yellow.200",
+                                color: useColorModeValue("blue.600", "yellow.200"),
                                 textDecoration: "underline",
                             }}
                         >
@@ -328,13 +377,7 @@ export default function Home({
                     />
                 ))}
 
-                <Button
-                    onClick={toggleColorMode}
-                    colorScheme="cyan"
-                    variant={isLight ? "solid" : "outline"}
-                >
-                    Toggle {isLight ? "Dark" : "Light"}
-                </Button>
+
             </Box>
         </>
     );
