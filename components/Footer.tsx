@@ -19,8 +19,8 @@ export default function Footer() {
             alignItems="center"
             justifyContent="space-between"
         >
-            <Text color="red.200">© 2021 Man Pham</Text>
-            <Text color="yellow.200">Created with Next.js and Chakra UI</Text>
+            <Text color={useColorModeValue("gray.600", "red.200")}>© 2021 Man Pham</Text>
+            <Text color={useColorModeValue("gray.600", "yellow.200")}>Created with Next.js and Chakra UI</Text>
             <div>
                 <Link
                     href="https://www.linkedin.com/in/m%E1%BA%ABn-ph%E1%BA%A1m-834428b5/"

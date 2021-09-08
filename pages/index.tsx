@@ -334,7 +334,7 @@ export default function Home({
                 <Divider mt={3} mb={3} />
 
                 <Heading
-                    color={useColorModeValue("orange.500", "red.400")}
+                    color={useColorModeValue("gray.700", "red.400")}
                     mb={5}
                 >
                     Education <Icon as={MdSchool} mb={1} fontSize={"3xl"} />
@@ -355,7 +355,7 @@ export default function Home({
                 <Divider mt={[10, 5]} mb={3} />
 
                 <Heading
-                    color={useColorModeValue("orange.500", "red.400")}
+                    color={useColorModeValue("gray.700", "red.400")}
                     mb={5}
                 >
                     Experience{" "}
