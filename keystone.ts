@@ -10,7 +10,7 @@ import {
 const Post = list({
     fields: {
         title: text({ isRequired: true }),
-        slug: text(),
+        slug: text({ isIndexed: "unique", isFilterable: true }),
         content: text(),
     },
 });
@@ -28,7 +28,7 @@ const Experience = list({
             ],
         }),
         location: text({ isRequired: true, defaultValue: "Vietnam" }),
-        startDate: timestamp({ isRequired: true }),
+        startDate: timestamp({ isRequired: true, isOrderable: true }),
         endDate: timestamp({ isRequired: true }),
         description: text({ ui: { displayMode: "textarea" } }),
         image: image({ isRequired: true }),

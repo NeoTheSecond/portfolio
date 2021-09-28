@@ -10,6 +10,7 @@ type Post {
 
 input PostWhereUniqueInput {
   id: ID
+  slug: String
 }
 
 input PostWhereInput {
@@ -17,6 +18,7 @@ input PostWhereInput {
   OR: [PostWhereInput!]
   NOT: [PostWhereInput!]
   id: IDFilter
+  slug: StringNullableFilter
 }
 
 input IDFilter {
@@ -28,6 +30,34 @@ input IDFilter {
   gt: ID
   gte: ID
   not: IDFilter
+}
+
+input StringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringNullableFilter
 }
 
 input PostOrderByInput {
@@ -104,6 +134,7 @@ input ExperienceWhereInput {
 
 input ExperienceOrderByInput {
   id: OrderDirection
+  startDate: OrderDirection
 }
 
 input ExperienceUpdateInput {
