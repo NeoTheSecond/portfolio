@@ -1,11 +1,11 @@
-import { config, list } from "@keystone-next/keystone/schema";
+import { config, list } from "@keystone-next/keystone";
 import {
     text,
     select,
     timestamp,
     image,
     relationship,
-} from "@keystone-next/fields";
+} from "@keystone-next/keystone/fields";
 
 const Post = list({
     fields: {
@@ -74,7 +74,11 @@ const Education = list({
 });
 
 export default config({
-    db: { provider: "sqlite", url: "file:./app.db" },
+    db: {
+        provider: "sqlite",
+        url: "file:./app.db",
+        idField: { kind: "autoincrement" },
+    },
     experimental: {
         generateNextGraphqlAPI: true,
         generateNodeAPI: true,
