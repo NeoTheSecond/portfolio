@@ -94,7 +94,7 @@ export default function Home({
                 />
                 <meta
                     name="description"
-                    content="My name is Mẫn, a Fullstack Web Developer with over 5 years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
+                    content="My name is Mẫn, a Fullstack Web Developer with over 2+ years of experience. I am also an undergraduate enrolled in Bachelor of Information Technology at RMIT University in Vietnam."
                 />
                 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
                 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
